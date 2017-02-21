@@ -50,6 +50,4 @@ class Down(object):
 
 
 if __name__ == '__main__':
-    oj = Down('test_236', 'FS109412')
-    oj.login()
-    oj.add_discuss('1243', '123')
+    pass
