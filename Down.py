@@ -14,13 +14,13 @@ class Down(object):
         self.user_name = user_name
         self.password = password
         self.session = requests.session()
-        self.headers = {'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'}
+        self.headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'}
         self.login()
 
     def login(self):
-        print requests.post(url="http://acm.sdut.edu.cn/onlinejudge2/index.php/Login/login.html",
+        requests.post(url="http://210.44.176.195/onlinejudge2/index.php/Login/login.html",
                           data={'user_name':self.user_name, 'password':self.password},
-                          headers=self.headers).url
+                          headers=self.headers)
 
     def submit_problem(self, pid, code, cid=None, lang='g++'):
         post_data = {'pid': pid, 'lang': lang, 'code': code}
@@ -51,5 +51,6 @@ class Down(object):
 
 
 if __name__ == '__main__':
-    oj = Down("16110543049", "FS109412")
+    oj = Down("test_234", "FS109412")
+    oj.login()
     #print oj.get_html("http://acm.sdut.edu.cn/onlinejudge2/index.php/Home/Contest/problemlist/cid/2022")
