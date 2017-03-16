@@ -62,5 +62,4 @@ class Down(object):
         return 'Accepted'
 
 if __name__ == '__main__':
-    oj = Down("test_234", "FS109412")
-    print oj.accepted_problem(1000)
+    pass
