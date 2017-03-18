@@ -19,9 +19,15 @@ class Down(object):
         self.login()
 
     def login(self):
-        self.session.post(url=self.url_home + self.url_login,
-                          data={'user_name':self.user_name, 'password':self.password},
-                          headers=self.headers)
+        check = self.session.post(url=self.url_home + self.url_login,
+                                  data={'user_name': self.user_name, 'password': self.password},
+                                  headers=self.headers).url
+
+        # 检测是否登录成功，登录成功后转向的页面url长度较短
+        if len(check) < 40:
+            return 'Success'
+        else:
+            return 'Fail'
 
     def submit_problem(self, pid, code, cid=None, lang='g++'):
         post_data = {'pid': pid, 'lang': lang, 'code': code}
@@ -62,4 +68,4 @@ class Down(object):
         return 'Accepted'
 
 if __name__ == '__main__':
-    pass
+    oj = Down("16110543049", "FS109412")

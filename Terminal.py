@@ -12,13 +12,32 @@ class Body(object):
         with open(self.root + file_name, 'r') as f:
             print f.read()
 
-    def show_problem_list(self, problem_list, page):
-        print self.blank_tab + '题目列表 ' + page + ' 页'
-        cnt = 0
-        for problem in problem_list:
-            print problem[0], problem[1]
+    def put_main_interface(self):
+        self.put_from_file('main_interface')
+
+
+class Main(object):
+
+    def __init__(self):
+        self.put = Body()
+
+    def get_ctrl(self):
+        while True:
+            try:
+                ctrl = int(raw_input('请输入操作：'))
+            except ValueError:
+                print '指令非法，请重新输入'
+            else:
+                return ctrl
+
+    def run_in_main_interface(self):
+        while True:
+            self.put.put_main_interface()
+            ctrl = self.get_ctrl()
+
+
 
 
 if __name__ == '__main__':
-    test = Body()
-    test.put_from_file(test.main_interface)
+    test = Main()
+    test.run_in_main_interface()
