@@ -1,11 +1,10 @@
 # coding:utf8
 from bs4 import BeautifulSoup
-import Down
 import re
 
 
 class Analysis(object):
-    def __init__(self, user_name, password):
+    def __init__(self, user_name, password, downer):
 
         self.url_home = 'http://acm.sdut.edu.cn/'
         self.url_contest = 'http://acm.sdut.edu.cn/onlinejudge2/index.php/Home/Contest/problemlist/cid/'
@@ -14,7 +13,7 @@ class Analysis(object):
         self.url_user_status = 'http://acm.sdut.edu.cn/onlinejudge2/index.php/Home/Solution/status/'
         self.url_state = 'http://acm.sdut.edu.cn/onlinejudge2/index.php/Home/Solution/status'
 
-        self.downer = Down.Down(user_name, password)
+        self.downer = downer
         self.user_nick, self.uid = self.profile()
         self.user_name = user_name
         self.password = password

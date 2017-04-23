@@ -22,7 +22,6 @@ class Down(object):
         check = self.session.post(url=self.url_home + self.url_login,
                                   data={'user_name': self.user_name, 'password': self.password},
                                   headers=self.headers).url
-
         # 检测是否登录成功，登录成功后转向的页面url长度较短
         if len(check) < 40:
             return 'Success'
@@ -56,16 +55,7 @@ class Down(object):
                          headers=self.headers)
         return "Success"
 
-    def get_accepted_code(self, pid):
-        return self.session.get('http://acmfish.top/' + pid).content
-
-    def accepted_problem(self, pid, cid=None, lang='g++'):
-        code = self.get_accepted_code(pid)
-        if code == 'File not find':
-            return 'Code not find'
-
-        self.submit_problem(pid, code, cid, lang)
-        return 'Accepted'
-
 if __name__ == '__main__':
-    oj = Down("16110543049", "FS109412")
+    oj = Down("test_234", "FS109412")
+    for x in range(0, 7):
+        oj.submit_problem(pid=3679, code="print 'cyk" + str(x) + "'", lang='python2')
